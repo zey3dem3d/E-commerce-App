@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from './shared/services/flowbite.service';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,11 @@ import { FlowbiteService } from './shared/services/flowbite.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  title = 'E-commerce';
-
-  constructor(private _flowbiteService: FlowbiteService) {}
+export class AppComponent {
+  constructor(private flowbiteService: FlowbiteService) {}
 
   ngOnInit(): void {
-    this._flowbiteService.loadFlowbite((flowbite) => {
+    this.flowbiteService.loadFlowbite((flowbite) => {
       // Your custom code here
       console.log('Flowbite loaded', flowbite);
     });
