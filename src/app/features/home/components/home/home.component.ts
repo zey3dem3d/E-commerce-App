@@ -9,4 +9,4 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {}
+export class HomeComponent {}
