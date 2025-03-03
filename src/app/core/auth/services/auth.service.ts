@@ -1,9 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() { }
+  register(data: any): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + 'auth/signup', data);
+  }
+
+  login(data: any): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + 'auth/signin', data);
+  }
 }
