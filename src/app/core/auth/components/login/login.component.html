@@ -4,7 +4,7 @@
     <form [formGroup]="authForm" (ngSubmit)="submitForm()">
       @let emailControl = authForm.get('email')?.touched
       &&authForm.get('email')?.invalid;
-      <div class="mb-5">
+      <div class="">
         <input
           type="email"
           id="email"
@@ -16,7 +16,7 @@
             'text-red-900': emailControl,
             'focus:ring-red-900': emailControl
           }"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color"
           placeholder="Enter Your Email.."
         />
 
@@ -24,7 +24,7 @@
       </div>
       @let passwordControl = authForm.get('password')?.touched &&
       authForm.get('password')?.invalid;
-      <div class="mb-5">
+      <div class="relative flex">
         <input
           [class]="{
             'bg-red-50': passwordControl,
@@ -38,16 +38,14 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
           placeholder="Enter Password.."
         />
-        <validation-messages [controls]="authForm.get('password')" />
+        <button type="button" (click)="showPassword()" class="">
+          <i
+            class="fa-regular fa-eye absolute right-5 top-7 cursor-pointer text-gray-400 hover:text-gray-600 transition-all duration-300"
+          ></i>
+        </button>
       </div>
+      <validation-messages [controls]="authForm.get('password')" />
 
-      <button
-        type="button"
-        (click)="showPassword()"
-        class="-bg--main-color text-white rounded-lg transition duration-300 text-sm py-2 px-3 text-center hover:-bg--main-color/80"
-      >
-        Show Password
-      </button>
       <!-- ----------------------------------------------------- -->
 
       <button

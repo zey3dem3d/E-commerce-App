@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
           if ((res.message = 'success')) {
             this.resMsgSuccess = res.message;
             setTimeout(() => {
+              this.authService.saveToken(res.token);
               this.router.navigate(['/home']);
             }, 1000);
           }

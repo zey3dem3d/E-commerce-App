@@ -10,12 +10,15 @@ import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.comp
 import { ProductListComponent } from './features/product/components/product-list/product-list.component';
 import { BrandListComponent } from './features/brands/components/brand-list/brand-list.component';
 import { ProductDetailsComponent } from './features/product/components/product-details/product-details.component';
+import { authGuard } from './core/guards/auth.guard';
+import { isLoggedGuard } from './core/guards/is-logged.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
     title: 'Auth',
+    canActivate: [isLoggedGuard],
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent, title: 'Login' },
@@ -26,8 +29,13 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     title: 'User',
+    canActivate: [authGuard],
     children: [
-      { path: 'home', component: HomeComponent, title: 'Home' },
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'Home',
+      },
       { path: 'categories', component: CategoryComponent, title: 'Category' },
       { path: 'products', component: ProductListComponent, title: 'Products' },
       {
@@ -37,7 +45,6 @@ export const routes: Routes = [
       },
       { path: 'brands', component: BrandListComponent, title: 'Brands' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
-      { path: '**', component: NotFoundComponent, title: 'Not Found' },
     ],
   },
   { path: '**', component: NotFoundComponent, title: 'Not Found' },

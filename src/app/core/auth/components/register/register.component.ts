@@ -86,10 +86,16 @@ export class RegisterComponent implements OnInit {
         },
       });
     } else {
-      // this.authForm.get('rePassword')?.setValue('');
+      this.authForm.get('rePassword')?.setValue(' ');
       this.authForm.markAllAsTouched();
     }
   }
+
+  isShowPassword: boolean = true;
+  showPassword() {
+    this.isShowPassword = !this.isShowPassword;
+  }
+
   ngOnInit(): void {
     this.formInit();
   }

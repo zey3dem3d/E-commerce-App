@@ -2,46 +2,88 @@
   <div class="max-w-2xl mx-auto shadow border border-gray-100 rounded-2xl p-6">
     <h2 class="mb-5 text-2xl">Register Now:</h2>
     <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+      @let nameControl = authForm.get('name')?.touched
+      &&authForm.get('name')?.invalid;
       <div class="mb-5">
         <input
           type="text"
           id="name"
           formControlName="name"
+          [class]="{
+            'bg-red-50': nameControl,
+            border: nameControl,
+            'border-red-500': nameControl,
+            'text-red-900': nameControl,
+            'focus:ring-red-900': nameControl
+          }"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
           placeholder="Enter Your Name.."
         />
         <validation-messages [controls]="authForm.get('name')" />
       </div>
+      @let emailControl = authForm.get('email')?.touched
+      &&authForm.get('email')?.invalid;
       <div class="mb-5">
         <input
           type="email"
           id="email"
           formControlName="email"
+          [class]="{
+            'bg-red-50': emailControl,
+            border: emailControl,
+            'border-red-500': emailControl,
+            'text-red-900': emailControl,
+            'focus:ring-red-900': emailControl
+          }"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
           placeholder="Enter Your Email.."
         />
         <validation-messages [controls]="authForm.get('email')" />
       </div>
-      <div class="mb-5">
+      @let passwordControl = authForm.get('password')?.touched
+      &&authForm.get('password')?.invalid;
+      <div class="relative flex">
         <input
-          type="password"
+          [type]="isShowPassword ? 'password' : 'text'"
           id="password"
           formControlName="password"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
+          [class]="{
+            'bg-red-50': passwordControl,
+            border: passwordControl,
+            'border-red-500': passwordControl,
+            'text-red-900': passwordControl,
+            'focus:ring-red-900': passwordControl
+          }"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color"
           placeholder="Enter Password.."
-        />
-        <validation-messages [controls]="authForm.get('password')" />
+        /><button type="button" (click)="showPassword()" class="">
+          <i
+            class="fa-regular fa-eye absolute right-5 top-3 cursor-pointer text-gray-400 hover:text-gray-600 transition-all duration-300"
+          ></i>
+        </button>
       </div>
-      <div class="mb-5">
+      <validation-messages [controls]="authForm.get('password')" />
+      @let rePasswordControl = authForm.get('rePassword')?.touched
+      &&authForm.get('rePassword')?.invalid;
+      <div class="relative flex">
         <input
+          [type]="isShowPassword ? 'password' : 'text'"
           type="password"
           id="rePassword"
           formControlName="rePassword"
+          [class]="{
+            'bg-red-50': rePasswordControl,
+            border: rePasswordControl,
+            'border-red-500': rePasswordControl,
+            'text-red-900': rePasswordControl,
+            'focus:ring-red-900': rePasswordControl
+          }"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:-ring--main-color block w-full p-2.5 placeholder-gray-400 focus:-border--main-color my-4"
           placeholder="Enter Repassword.."
         />
-        <validation-messages [controls]="authForm" />
+        <button type="button" (click)="showPassword()" class=""></button>
       </div>
+      <validation-messages [controls]="authForm" />
       <!-- ----------------------------------------------------- -->
 
       <button
