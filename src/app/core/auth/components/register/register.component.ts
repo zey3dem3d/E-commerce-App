@@ -11,7 +11,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ValidationMessagesComponent } from '../../../../shared/components/validation-messages/validation-messages.component';
-import { log } from 'console';
 
 @Component({
   selector: 'app-register',
@@ -70,7 +69,6 @@ export class RegisterComponent implements OnInit {
     if (this.authForm.valid || !this.isLoading) {
       this.authService.register(this.authForm.value).subscribe({
         next: (res) => {
-          console.log(res);
           this.isLoading = true;
           if ((res.message = 'success')) {
             this.resMsgSuccess = res.message;
@@ -80,7 +78,6 @@ export class RegisterComponent implements OnInit {
           }
         },
         error: ({ error }) => {
-          console.log(error);
           this.resMsg = error.message;
           this.isLoading = true;
         },

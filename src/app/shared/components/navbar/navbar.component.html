@@ -72,14 +72,6 @@
         <li>
           <a
             class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer hover:text-black"
-            routerLink="/cart"
-            routerLinkActive="text-black font-bold"
-            >Cart</a
-          >
-        </li>
-        <li>
-          <a
-            class="block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer hover:text-black"
             routerLink="/wishlist"
             routerLinkActive="text-black font-bold"
             >Wishlist</a
@@ -114,6 +106,19 @@
       <ul
         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-200 rounded-lg -bg--color-light md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
       >
+        <li>
+          <a
+            class="relative block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer hover:text-black"
+            routerLink="/cart"
+            routerLinkActive="text-black font-bold"
+            ><i class="fa fa-cart-shopping text-2xl"> </i>
+            <div
+              class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white -bg--main-color border-2 border-gray-100 rounded-full -top-3 -end-3"
+            >
+              3
+            </div></a
+          >
+        </li>
         <li>
           <a
             (click)="logout()"

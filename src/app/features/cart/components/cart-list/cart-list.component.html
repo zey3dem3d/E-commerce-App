@@ -1,0 +1,64 @@
+@if (isLoading) { @if (cartDetails.data.totalCartPrice != 0) {
+<section class="container mx-auto">
+  <div class="bg-gray-100 px-12 pt-4 pb-12 m-5 shadow">
+    <div class="flex justify-between">
+      <div>
+        <h1 class="text-3xl font-bold my-3">Shop Cart</h1>
+        <p class="-text--main-color font-bold m-1">
+          Total Cart Price: {{ cartDetails.data.totalCartPrice }} EGP
+        </p>
+      </div>
+      <div>
+        <button
+          (click)="clearCart()"
+          class="bg-red-900 hover:bg-red-900/85 transition duration-700 text-white p-3 rounded-xl"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+
+    @for (item of cartDetails.data.products; track $index) {
+    <app-cart-item
+      [product]="item"
+      (updateProductQty)="updateQty($event.id, $event.count)"
+      (removeProduct)="removeProduct($event)"
+    />
+    }
+
+    <div class="flex justify-between">
+      <button
+        routerLink="/products"
+        class="-bg--main-color text-white px-8 py-2 rounded-lg w-auto my-3 hover:-bg--main-color/80 transition duration-300 translate-y-full group-hover:translate-y-0 group-hover:opacity-100"
+      >
+        Continue Shopping
+      </button>
+      <button
+        routerLink="/checkout"
+        class="bg-black text-white px-8 py-2 rounded-lg w-auto my-3 hover:bg-black/80 transition duration-300 translate-y-full group-hover:translate-y-0 group-hover:opacity-100"
+      >
+        Go To Checkout
+        <span class="ms-2">{{ cartDetails.data.totalCartPrice }} EGP</span>
+      </button>
+    </div>
+  </div>
+</section>
+}@else {
+<section class="container mx-auto">
+  <div class="bg-gray-100 px-12 pt-4 pb-12 m-5 shadow">
+    <div class="flex justify-center">
+      <div>
+        <h1 class="text-4xl -text--main-color font-bold">Cart is empty</h1>
+        <button
+          routerLink="/products"
+          class="-bg--main-color text-white px-8 py-2 rounded-lg w-full my-3 hover:-bg--main-color/80 transition duration-300 translate-y-full group-hover:translate-y-0 group-hover:opacity-100"
+        >
+          Shopping Now
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+} }@else {
+<h1 class="text-3xl my-10 text-center">Loading...</h1>
+}

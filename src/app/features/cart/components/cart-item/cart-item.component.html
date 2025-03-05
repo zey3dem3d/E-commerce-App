@@ -1,0 +1,37 @@
+<div class="grid grid-cols-12 gap-5 my-5 border-b border-gray-200 py-3">
+  <div class="lg:col-span-1">
+    <img [src]="product.product.imageCover" class="w-full" alt="" />
+  </div>
+  <div class="col-span-11 flex justify-between">
+    <div class="">
+      <h4 class="font-bold">{{ product.product.title }}</h4>
+      <span class="-text--main-color block my-5"
+        >Price: {{ product.price }}</span
+      >
+      <button
+        (click)="onRemove()"
+        class="rmve-btn px-4 py-2 rounded-full hover:-bg--main-color hover:text-white transition duration-200"
+      >
+        <i class="fa fa-trash-can -text--main-color hover:text-white"></i>
+        Remove
+      </button>
+    </div>
+    <div>
+      <div class="rounded-full lg:my-6 p-1">
+        <button
+          (click)="onUpdataQty(product.count + 1)"
+          class="px-4 py-2 rounded-full hover:-bg--main-color hover:text-white transition duration-200 border-2 -border--main-color"
+        >
+          +
+        </button>
+        <span class="mx-3">{{ product.count }}</span>
+        <button
+          (click)="onUpdataQty(product.count - 1)"
+          class="px-4 py-2 rounded-full hover:-bg--main-color hover:text-white transition duration-200 border-2 -border--main-color"
+        >
+          -
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

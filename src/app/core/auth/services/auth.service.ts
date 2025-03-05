@@ -21,27 +21,36 @@ export class AuthService {
 
   decodeToken() {
     try {
-      const decoded = jwtDecode(localStorage.getItem('authToken')!);
-      console.log(decoded);
+      if (typeof localStorage != 'undefined') {
+        const decoded = jwtDecode(localStorage.getItem('authToken')!);
+        console.log(decoded);
+      }
     } catch {
       this.logout();
     }
   }
 
   saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    if (typeof localStorage != 'undefined')
+      localStorage.setItem('authToken', token);
   }
 
-  // getToken(): string | null {
-  //   return localStorage.getItem('authToken');
-  // }
+  getToken(): string | null {
+    if (typeof localStorage != 'undefined')
+      return localStorage.getItem('authToken');
+
+    return null;
+  }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
+    if (typeof localStorage != 'undefined')
+      return !!localStorage.getItem('authToken');
+
+    return false;
   }
 
   logout() {
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
     localStorage.clear();
   }
 }

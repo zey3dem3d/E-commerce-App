@@ -3,7 +3,6 @@ import { LoginComponent } from './core/auth/components/login/login.component';
 import { RegisterComponent } from './core/auth/components/register/register.component';
 import { HomeComponent } from './features/home/components/home/home.component';
 import { CategoryComponent } from './features/category/components/category/category.component';
-import { CartComponent } from './features/cart/components/cart/cart.component';
 import { NotFoundComponent } from './core/auth/components/not-found/not-found.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
@@ -12,6 +11,7 @@ import { BrandListComponent } from './features/brands/components/brand-list/bran
 import { ProductDetailsComponent } from './features/product/components/product-details/product-details.component';
 import { authGuard } from './core/guards/auth.guard';
 import { isLoggedGuard } from './core/guards/is-logged.guard';
+import { CartListComponent } from './features/cart/components/cart-list/cart-list.component';
 
 export const routes: Routes = [
   {
@@ -44,7 +44,7 @@ export const routes: Routes = [
         title: 'Product Details',
       },
       { path: 'brands', component: BrandListComponent, title: 'Brands' },
-      { path: 'cart', component: CartComponent, title: 'Cart' },
+      { path: 'cart', component: CartListComponent, title: 'Cart' },
     ],
   },
   { path: '**', component: NotFoundComponent, title: 'Not Found' },
