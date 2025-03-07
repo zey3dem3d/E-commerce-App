@@ -42,6 +42,7 @@ export class CartListComponent implements OnInit {
       next: (res) => {
         this.cartDetails = res;
         this.showToaster('Product removed successfully');
+        this.cartService.cartCounter.next(res.numOfCartItems);
       },
     });
   }

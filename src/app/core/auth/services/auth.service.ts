@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {}
 
   register(data: any): Observable<any> {
     return this.httpClient.post(environment.baseUrl + 'auth/signup', data);
@@ -36,8 +41,9 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    if (typeof localStorage != 'undefined')
+    if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem('authToken');
+    }
 
     return null;
   }

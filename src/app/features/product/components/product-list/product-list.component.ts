@@ -41,6 +41,8 @@ export class ProductListComponent implements OnInit {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         this.showToaster('Product added successfully');
+
+        this.cartService.cartCounter.next(res.numOfCartItems);
       },
     });
   }

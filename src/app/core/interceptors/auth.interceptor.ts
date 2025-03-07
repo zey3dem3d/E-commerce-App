@@ -7,7 +7,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (req.url.includes('cart') || req.url.includes('orders')) {
     req = req.clone({
       setHeaders: {
-        token: auth.getToken()!,
+        token: auth.getToken() || '',
       },
     });
   }
