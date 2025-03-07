@@ -35,26 +35,14 @@ export class CartService {
   }
 
   getLoggedUserCart(): Observable<any> {
-    return this.http.get(environment.baseUrl + 'cart', {
-      headers: {
-        token: this.auth.getToken()!,
-      },
-    });
+    return this.http.get(environment.baseUrl + 'cart');
   }
 
   removeCartItem(productId: string): Observable<any> {
-    return this.http.delete(environment.baseUrl + 'cart/' + productId, {
-      headers: {
-        token: this.auth.getToken()!,
-      },
-    });
+    return this.http.delete(environment.baseUrl + 'cart/' + productId);
   }
 
   clearCart(): Observable<any> {
-    return this.http.delete(environment.baseUrl + 'cart', {
-      headers: {
-        token: this.auth.getToken()!,
-      },
-    });
+    return this.http.delete(environment.baseUrl + 'cart');
   }
 }

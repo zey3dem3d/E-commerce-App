@@ -58,7 +58,6 @@ export class CartListComponent implements OnInit {
   clearCart() {
     this.cartService.clearCart().subscribe({
       next: (res) => {
-        console.log(res);
         this.loadCart();
         this.showToaster('Cart cleared successfully');
       },

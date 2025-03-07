@@ -4,10 +4,6 @@
     <div class="grid gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       @for (product of allProducts; track product._id) {
       <app-product-card [product]="product" (addToCart)="addToCart($event)" />
-      }@empty {
-      <h2 class="text-5xl font-bold text-center col-span-12 -text--main-color">
-        Loading...
-      </h2>
       }
     </div>
   </div>
