@@ -15,6 +15,7 @@ import { CartListComponent } from './features/cart/components/cart-list/cart-lis
 import { CheckoutComponent } from './features/order/components/checkout/checkout.component';
 import { OrdersComponent } from './features/order/components/orders/orders.component';
 import { WishlistComponent } from './features/wishlist/components/wishlist/wishlist.component';
+import { ResetPasswordComponent } from './core/auth/components/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -52,6 +53,11 @@ export const routes: Routes = [
       { path: 'allorders', component: OrdersComponent, title: 'All Orders' },
       { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' },
     ],
+  },
+  {
+    path: 'resetpassword',
+    component: ResetPasswordComponent,
+    title: 'Forget Password',
   },
   { path: '**', component: NotFoundComponent, title: 'Not Found' },
 ];

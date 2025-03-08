@@ -48,6 +48,16 @@
 
       <!-- ----------------------------------------------------- -->
 
+      <div class="flex justify-end">
+        <button
+          class="mx-3"
+          type="button
+        "
+          routerLink="/resetpassword"
+        >
+          Forget Password? 😆
+        </button>
+      </div>
       <button
         [disabled]="authForm.invalid || !isLoading"
         [class.bg-gray-300]="authForm.invalid || !isLoading"
@@ -72,10 +82,6 @@
         </svg>
         Loading... }
       </button>
-
-      <!-- -------------------------------------------------------------------------------- -->
-
-      <!-- -------------------------------------------------------------------------------- -->
 
       @if (resMsg) {
       <div

@@ -1,10 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
-  AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -13,7 +11,7 @@ import { ValidationMessagesComponent } from '../../../../shared/components/valid
 
 @Component({
   selector: 'app-login',
-  imports: [ValidationMessagesComponent, ReactiveFormsModule],
+  imports: [ValidationMessagesComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -60,7 +58,6 @@ export class LoginComponent implements OnInit {
         },
         error: ({ error }) => {
           this.resMsg = error.message;
-
           this.isLoading = true;
         },
       });

@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ValidationMessagesComponent } from '../../../../shared/components/validation-messages/validation-messages.component';
-import { log } from 'node:util';
 
 @Component({
   selector: 'app-checkout',
