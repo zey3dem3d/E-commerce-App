@@ -2,7 +2,6 @@ import { ResetPasswordService } from './../../services/reset-password.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, inject } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -10,6 +9,7 @@ import {
 } from '@angular/forms';
 import { ValidationMessagesComponent } from '../../../../shared/components/validation-messages/validation-messages.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -21,6 +21,7 @@ export class ResetPasswordComponent {
   private readonly resetPasswordService = inject(ResetPasswordService);
   private readonly router = inject(Router);
   private readonly toastr = inject(ToastrService);
+  private readonly auth = inject(AuthService);
 
   authForm!: FormGroup;
   isLoading = true;
@@ -84,7 +85,12 @@ export class ResetPasswordComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/login']);
+
+          if (res.token) {
+            localStorage.setItem('authToken', res.token);
+            this.auth.isAuthenticated();
+            this.router.navigate(['/home']);
+          }
         },
       });
   }
