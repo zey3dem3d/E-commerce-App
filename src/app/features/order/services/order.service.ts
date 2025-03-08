@@ -14,7 +14,7 @@ export class OrderService {
     cartId: string | null,
     shippingAddress: { details: string; phone: string; city: string }
   ): Observable<any> {
-    const returnUrl = '?url=http://localhost:4200';
+    const returnUrl = '?url=e-commerce.vercel.app';
     return this.http.post(
       environment.baseUrl + 'orders/checkout-session/' + cartId + returnUrl,
       {
