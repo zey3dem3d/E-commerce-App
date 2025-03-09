@@ -62,7 +62,7 @@ export class ResetPasswordComponent {
 
   submitCode() {
     this.resetPasswordService.verifyCode(this.verifyCode.value).subscribe({
-      next: (res) => {
+      next: () => {
         this.steps++;
       },
     });
@@ -82,9 +82,9 @@ export class ResetPasswordComponent {
     this.resetPasswordService
       .resetPassword(this.resetPassword.value)
       .subscribe({
-        next: (myRes) => {
-          if (myRes.token) {
-            localStorage.setItem('authToken', myRes.token);
+        next: (response) => {
+          if (response.token) {
+            localStorage.setItem('authToken', response.token);
             this.auth.isAuthenticated();
             this.router.navigate(['/home']);
           }
