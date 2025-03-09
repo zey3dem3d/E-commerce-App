@@ -83,11 +83,11 @@ export class ResetPasswordComponent {
     this.resetPasswordService
       .resetPassword(this.resetPassword.value)
       .subscribe({
-        next: (res) => {
-          console.log(res);
+        next: (myRes) => {
+          console.log(myRes);
 
-          if (res.token) {
-            localStorage.setItem('authToken', res.token);
+          if (myRes.token) {
+            localStorage.setItem('authToken', myRes.token);
             this.auth.isAuthenticated();
             this.router.navigate(['/home']);
           }
