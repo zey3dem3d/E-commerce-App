@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         },
       });
     } else {
-      // this.authForm.get('rePassword')?.setValue('');
+      this.authForm.get('rePassword')?.setValue('');
       this.authForm.markAllAsTouched();
     }
   }

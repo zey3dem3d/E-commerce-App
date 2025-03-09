@@ -63,7 +63,6 @@ export class ResetPasswordComponent {
   submitCode() {
     this.resetPasswordService.verifyCode(this.verifyCode.value).subscribe({
       next: (res) => {
-        console.log(res);
         this.steps++;
       },
     });
@@ -84,8 +83,6 @@ export class ResetPasswordComponent {
       .resetPassword(this.resetPassword.value)
       .subscribe({
         next: (myRes) => {
-          console.log(myRes);
-
           if (myRes.token) {
             localStorage.setItem('authToken', myRes.token);
             this.auth.isAuthenticated();
