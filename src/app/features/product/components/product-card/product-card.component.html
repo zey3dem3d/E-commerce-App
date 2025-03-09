@@ -16,7 +16,11 @@
     </div>
   </div>
   <div class="flex justify-end me-3 mt-3">
-    <i class="fa-solid fa-heart text-3xl hover:text-red-300 transition"></i>
+    <i
+      class="fa-solid fa-heart text-3xl hover:text-red-200 transition"
+      [class.text-red-600]="isLike"
+      (click)="isLiked()"
+    ></i>
   </div>
   <button
     (click)="onAddToCart()"

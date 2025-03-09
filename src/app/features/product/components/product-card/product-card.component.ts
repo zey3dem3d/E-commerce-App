@@ -1,8 +1,6 @@
-import { AuthService } from './../../../../core/auth/services/auth.service';
 import { Component, inject, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../../cart/services/cart.service';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -14,6 +12,12 @@ import { EventEmitter } from '@angular/core';
 export class ProductCardComponent {
   @Input() product!: Product;
   @Output() addToCart = new EventEmitter<string>();
+
+  isLike: boolean = false;
+
+  isLiked() {
+    this.isLike = !this.isLike;
+  }
 
   onAddToCart() {
     this.addToCart.emit(this.product._id);
