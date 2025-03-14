@@ -34,5 +34,5 @@ A modern **E-commerce App** built with **Angular** that provides users with a se
 
 ##
 
- - **<a href="https://e-commerce-app-five-gray.vercel.app" target="_blank">Demo</a>**
+ - **<a href="https://e-commerce-app-khad.vercel.app" target="_blank">Demo</a>**
 
