@@ -21,8 +21,6 @@ export class NavbarComponent {
   }
 
   ngOnInit(): void {
-    // console.log(this.authService.decodeToken());
-
     this.cartService.cartCounter.subscribe({
       next: (value) => {
         this.navbarCounter = value;
@@ -32,7 +30,6 @@ export class NavbarComponent {
     if (isPlatformBrowser(this.platformId)) {
       this.cartService.getLoggedUserCart().subscribe({
         next: (res) => {
-          console.log(res);
           this.cartService.cartCounter.next(res.numOfCartItems);
         },
       });

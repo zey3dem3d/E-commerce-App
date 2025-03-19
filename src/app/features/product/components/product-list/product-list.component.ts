@@ -4,15 +4,19 @@ import { Product } from '../../models/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { ProductsService } from './../../services/products.service';
 import { Component, inject, OnInit } from '@angular/core';
+import { SearchPipe } from '../../../../shared/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCardComponent],
+  imports: [ProductCardComponent, SearchPipe, FormsModule, TitleCasePipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
 export class ProductListComponent implements OnInit {
   allProducts: Product[] = [];
+  searchTerm: string = '';
 
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
@@ -33,7 +37,6 @@ export class ProductListComponent implements OnInit {
     this.productsService.getProducts().subscribe({
       next: ({ data }) => {
         this.allProducts = data;
-        // console.log(this.allProducts);
       },
     });
   }
@@ -42,7 +45,6 @@ export class ProductListComponent implements OnInit {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         this.showToaster('Product added successfully');
-
         this.cartService.cartCounter.next(res.numOfCartItems);
       },
     });

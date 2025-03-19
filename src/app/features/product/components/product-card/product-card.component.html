@@ -22,6 +22,7 @@
       (click)="isLiked()"
     ></i>
   </div>
+  <p>{{ product.createdAt | date : "medium" }}</p>
   <button
     (click)="onAddToCart()"
     class="-bg--main-color text-white px-8 py-2 rounded-lg w-full my-3 hover:-bg--main-color/80 transition duration-300 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
