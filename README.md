@@ -33,7 +33,5 @@ A modern **E-commerce App** built with **Angular** that provides users with a se
    ng s -o
 
 ## How to Use  
-1. Open the [Live Demo](https://e-commerce-app-khad.vercel.app) or clone the repository.  
-2. Add a website URL and name to save a bookmark.
-3. Edit or delete bookmarks as needed.  
+- Open the [Live Demo](https://e-commerce-app-khad.vercel.app) or clone the repository.
 
